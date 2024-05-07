@@ -8,11 +8,11 @@ class MemoryColumn extends StatelessWidget {
 
   final NruColumn nruColumn;
 
-  MemoryColumn({super.key, required this.nruColumn });
+  const MemoryColumn({super.key, required this.nruColumn });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 60,
       child: Column(
         children: nruColumn.nruElements.map((nruElement) =>

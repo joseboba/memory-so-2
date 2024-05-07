@@ -20,7 +20,7 @@ class MemoryPage extends StatelessWidget {
         child:  Text(
           pageData,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18
           ),
       ),

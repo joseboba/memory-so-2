@@ -6,7 +6,7 @@ import 'package:memory/presentation/blocs/nru/nru_bloc.dart';
 
 void main()  {
   serviceLocatorInit();
-  runApp(const MyApp());
+  runApp(const BlocProviders());
 }
 
 
@@ -17,7 +17,6 @@ class BlocProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          // TODO: SE DEBEN DE AGREGAR LOS BLOC PROVIDERS CUANTO LOS TENGAMOS
           BlocProvider(create: (_) => getIt<NruBloc>())
         ],
         child: const MyApp()

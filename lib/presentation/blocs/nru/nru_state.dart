@@ -1,19 +1,25 @@
 part of 'nru_bloc.dart';
 
-@immutable
-abstract class NruState {
-
+class NruState extends Equatable {
   final List<NruColumn> nruColumns;
   final bool modificationBit;
   final bool reset;
  
 
-  NruState({required this.nruColumns, this.modificationBit = false, this.reset = false});
+  const NruState({required this.nruColumns, this.modificationBit = false, this.reset = false});
 
-}
+  NruState copyWith({
+    List<NruColumn>? nruColumns,
+    bool? modificationBit,
+    bool? reset,
+  }) {
+    return NruState(
+      nruColumns: nruColumns ?? this.nruColumns,
+      modificationBit: modificationBit ?? this.modificationBit,
+      reset: reset ?? this.reset,
+    );
+  }
 
-
-class NruInitialState extends NruState {
-
-   NruInitialState() : super(nruColumns: List<NruColumn>.empty());
+  @override
+  List<Object> get props => [nruColumns, modificationBit, reset];
 }

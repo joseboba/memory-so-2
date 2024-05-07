@@ -1,16 +1,19 @@
 
 part of 'nru_bloc.dart';
 
-@immutable
-abstract class NruEvent {}
 
+abstract class NruEvent extends Equatable {
+  const NruEvent();
 
-class InitializeNru extends NruEvent {
-
-  InitializeNru();
+  @override
+  List<Object> get props => [];
 }
 
 class AddNruElement extends NruEvent {
-  final nruElement;
-  AddNruElement(this.nruElement);
+  final NruColumn nruElement;
+
+  const AddNruElement(this.nruElement);
+
+  @override
+  List<Object> get props => [nruElement];
 }
