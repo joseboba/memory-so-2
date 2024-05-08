@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memory/config/config.dart';
 import 'package:memory/presentation/blocs/blocs.dart';
+import 'package:memory/presentation/blocs/nru/nru_bloc.dart';
 
 void main()  {
   serviceLocatorInit();
-  runApp(const MyApp());
+  runApp(const BlocProviders());
 }
 
 
@@ -15,8 +16,8 @@ class BlocProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: const [
-          // TODO: SE DEBEN DE AGREGAR LOS BLOC PROVIDERS CUANTO LOS TENGAMOS
+        providers: [
+          BlocProvider(create: (_) => getIt<NruBloc>())
         ],
         child: const MyApp()
     );
