@@ -13,6 +13,6 @@ final appRouter = GoRouter(routes: [
 
 final menuItems = <MenuItem>[
   MenuItem('Reloj', Icons.access_time_outlined, '/clock'),
-  MenuItem('FIFO', Icons.stacked_bar_chart_sharp, '/nru'),
+  MenuItem('FIFO', Icons.stacked_bar_chart_sharp, '/fifo'),
   MenuItem('NRU', Icons.account_tree_sharp, '/nru'),
 ];

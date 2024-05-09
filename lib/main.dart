@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memory/config/config.dart';
 import 'package:memory/presentation/blocs/blocs.dart';
+import 'package:memory/presentation/blocs/fifo/fifo_bloc.dart';
 import 'package:memory/presentation/blocs/nru/nru_bloc.dart';
 
 void main()  {
@@ -18,7 +19,8 @@ class BlocProviders extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => getIt<NruBloc>()),
-          BlocProvider(create: (_) => getIt<ClockBloc>())
+          BlocProvider(create: (_) => getIt<ClockBloc>()),
+          BlocProvider(create: (_) => getIt<FifoBloc>())
         ],
         child: const MyApp()
     );
