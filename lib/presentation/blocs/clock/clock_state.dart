@@ -65,9 +65,9 @@ class ClockState extends Equatable {
     );
   }
 
-  bool get allNotNull {
-    for (final pageEntry in pages.entries) {
-      if (pageEntry.value == null) return false;
+  bool get allActive {
+    for (final pageEntry in activePages.entries) {
+      if (!pageEntry.value) return false;
     }
 
     return true;

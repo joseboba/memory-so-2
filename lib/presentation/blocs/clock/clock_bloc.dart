@@ -28,12 +28,11 @@ class ClockBloc extends Bloc<ClockEvent, ClockState> {
     final activePages = Map<int, bool>.from(state.activePages);
     final page = state.page + 1;
 
-    if (state.allNotNull) {
+    if (state.allActive) {
       bool nextActivate = activePages[1] ?? false;
       int nextIdentification = 1;
       while (nextActivate) {
         activePages[nextIdentification] = false;
-        pages[nextIdentification] = null;
         final newTurn = _calculateNextTurn(nextIdentification, emit);
         emit(state.copyWith(turn: newTurn, pages: pages, activePages: activePages));
         await Future.delayed(const Duration(milliseconds: 500));
@@ -44,11 +43,10 @@ class ClockBloc extends Bloc<ClockEvent, ClockState> {
 
     for (final pageEntry in pages.entries) {
       final key = pageEntry.key;
-      final value = pageEntry.value;
-      final isActive = activePages[key]!;
+      final isActive = activePages[key] == true;
       final nextTurn = _calculateNextTurn(key, emit);
 
-      if (!isActive && value == null) {
+      if (!isActive) {
         activePages[key] = true;
         pages[key] = page;
         emit(state.copyWith(turn: nextTurn, page: page));
